@@ -10,7 +10,7 @@ OBJ_DIR = obj
 #                                SOURCE FILES                                  #
 ################################################################################
 
-SOURCE = Bureaucrat.cpp main.cpp 
+SOURCE = main.cpp Form.cpp Bureaucrat.cpp
 
 ################################################################################
 #                             COMPILER OPTIONS                                 #
