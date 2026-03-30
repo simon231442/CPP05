@@ -9,6 +9,7 @@
 class ShrubberyCreationForm : public AForm {
 	private :
 		std::string				Target_;
+		void					action(void) const;
 	public :
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
@@ -17,7 +18,6 @@ class ShrubberyCreationForm : public AForm {
 
 		ShrubberyCreationForm&	operator=(ShrubberyCreationForm const& src);
 
-		void					execute(Bureaucrat const & executor) const;
 };
 
 #define BIEUTILFULLTREE \

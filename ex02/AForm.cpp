@@ -29,7 +29,7 @@ AForm::~AForm()
 {
 }
 
-AForm&			AForm::operator=(AForm const &src)
+AForm&				AForm::operator=(AForm const &src)
 {
 	if (this != &src)
 		this->Signed_ = src.Signed_;	
@@ -41,26 +41,40 @@ std::string const&	AForm::getName(void) const
 	return Name_;
 }
 
-int				AForm::getSignGrade(void) const
+int					AForm::getSignGrade(void) const
 {
 	return SignGrade_;
 }
 
-int				AForm::getExecGrade(void) const
+int					AForm::getExecGrade(void) const
 {
 	return ExecGrade_;
 }
 
-bool			AForm::getSigned(void) const
+bool				AForm::getSigned(void) const
 {
 	return Signed_;
 }
 
-void			AForm::beSigned(Bureaucrat const& bureaucrat)
+void				AForm::beSigned(Bureaucrat const& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->SignGrade_)
 		throw GradeTooLowException();
 	this->Signed_ = 1;
+}
+  
+void				AForm::execute(Bureaucrat const & executor) const
+{
+	if (executor.getGrade() > this->getExecGrade())
+		throw GradeTooLowException();
+	if (!this->getSigned())
+		throw NotSignedException();
+	this->action();
+}
+
+char const*			AForm::NotSignedException::what() const throw()
+{
+	return "form isn't signed";
 }
 
 char const*			AForm::GradeTooHighException::what() const throw()
@@ -81,3 +95,4 @@ std::ostream&		operator<<(std::ostream &out, AForm const &form)
 
 	return out;
 }
+

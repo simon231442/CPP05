@@ -75,12 +75,12 @@ void				Bureaucrat::signForm(AForm &form)
 	try 
 	{
 		form.beSigned(*this);
+		std::cout << Name_ << " signed " << form.getName() << ".\n";
 	}
 	catch (std::exception & e)// en savoir plus sur cette synthaxe
 	{
 		std::cout << Name_ << " couldn't sign " << form.getName() << " because " << e.what() << ".\n";
 	}
-	std::cout << Name_ << " signed " << form.getName() << ".\n";
 }
 
 void				Bureaucrat::executeForm(AForm const & form)
@@ -88,13 +88,13 @@ void				Bureaucrat::executeForm(AForm const & form)
 	try
 	{
 		form.execute(*this);
+		std::cout << Name_ << " executed " << form.getName() << ".\n";
 	}
 	catch (std::exception & e)
 	{
-		std::cout << Name_ << "failed with the form " << form.getName();
-		std::cout << "because" << e.what() << std::endl;
+		std::cout << Name_ << " failed with the form " << form.getName();
+		std::cout << " because " << e.what() << std::endl;
 	}
-	std::cout << Name_ << " executed " << form.getName();
 }
 
 

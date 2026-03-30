@@ -10,7 +10,7 @@ OBJ_DIR = obj
 #                                SOURCE FILES                                  #
 ################################################################################
 
-SOURCE = main.cpp ShrubberyCreationForm_execute.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp
+SOURCE = main.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp
 
 ################################################################################
 #                             COMPILER OPTIONS                                 #

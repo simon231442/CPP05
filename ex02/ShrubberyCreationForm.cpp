@@ -1,6 +1,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), Target_("default")
 {
@@ -27,3 +28,14 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	}
 	return (*this);
 }
+
+void		ShrubberyCreationForm::action(void) const
+{
+	std::ofstream file((Target_ + "_shrubbery").c_str());
+	if (file.is_open())
+	{
+		file << BIEUTILFULLTREE << std::endl;
+		file.close();
+	}
+}
+
