@@ -2,6 +2,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iomanip>
 #include <ctime>
 #include <cstdlib>
@@ -46,5 +47,27 @@ int	main(void)
 		std::cout << lowly << robotForm;
 		lowly.executeForm(robotForm);
 	}
+	{
+		Bureaucrat				leche_botte("leche_botte", 5);
+		PresidentialPardonForm	graceForm("Epstein");
+
+		std::cout << std::endl;
+		std::cout << "----------" << std::setw(43) << std::right << "Test 5 : Grace SUCCESS" << std::setw(8) << "" << "----------" << std::endl;
+		std::cout << leche_botte << graceForm;
+		leche_botte.signForm(graceForm);
+		leche_botte.executeForm(graceForm);
+	}
+	
+	{
+		Bureaucrat				trop_confiant("trop_confiant", 25);
+		PresidentialPardonForm	graceForm("Epstein");
+
+		std::cout << std::endl;
+		std::cout << "----------" << std::setw(43) << std::right << "Test 6 : Grace Failed" << std::setw(8) << "" << "----------" << std::endl;
+		std::cout << trop_confiant << graceForm;
+		trop_confiant.signForm(graceForm);
+		trop_confiant.executeForm(graceForm);
+	}
+	
 	return 0;
 }
