@@ -42,14 +42,14 @@ void				Bureaucrat::incrementGrade(void)
 {
 	if (Grade_ - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
-	Grade_++;
+	Grade_--;
 }
 
 void				Bureaucrat::decrementGrade(void)
 {
 	if (Grade_ + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
-	Grade_--;
+	Grade_++;
 }
 
 char const*			Bureaucrat::GradeTooHighException::what() const throw()
@@ -75,16 +75,21 @@ void				Bureaucrat::signForm(Form &form)
 	try 
 	{
 		form.beSigned(*this);
+		std::cout << Name_ << " signed " << form.getName() << ".\n";
 	}
 	catch (std::exception & e)// en savoir plus sur cette synthaxe
 	{
 		std::cout << Name_ << " couldn't sign " << form.getName() << " because " << e.what() << ".\n";
+		return;
 	}
-	std::cout << Name_ << " signed " << form.getName() << ".\n";
 }
 
 void				Bureaucrat::setGrade(int grade)
 {
+	if (grade < 1)
+		throw GradeTooHighException();
+	if (grade > 150)
+		throw GradeTooLowException();
 	Grade_ = grade;
 }
 

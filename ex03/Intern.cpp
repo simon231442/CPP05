@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 Intern::Intern()
 {
@@ -19,8 +20,7 @@ Intern::~Intern()
 
 Intern&		Intern::operator=(Intern const & src)
 {
-	if (this != &src)
-		*this = src;
+	(void)src;
 	return *this;
 }
 

@@ -2,6 +2,7 @@
 # define INTERN_HPP
 
 #include <string>
+#include <exception>
 
 class AForm;
 

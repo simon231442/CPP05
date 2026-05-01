@@ -3,14 +3,12 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", "default", 145, 137)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
-{
-	Target_ = target;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", target, 145, 137)
+{}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& src) : AForm(src)
 {
@@ -31,7 +29,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 void		ShrubberyCreationForm::action(void) const
 {
-	std::ofstream file((Target_ + "_shrubbery").c_str());
+	std::ofstream file((getTarget() + "_shrubbery").c_str());
 	if (file.is_open())
 	{
 		file << BIEUTILFULLTREE << std::endl;

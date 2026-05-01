@@ -8,17 +8,18 @@
 class Bureaucrat;
 
 class AForm {
-	protected :
+	private :
 		std::string const	Name_;
 		bool				Signed_;
 		int const			SignGrade_;
 		int const			ExecGrade_;
+	protected :
 		virtual void		action(void) const = 0;
 	public :
 		AForm();
 		AForm(std::string const name, int const signed_grade, int const exec_grade);
 		AForm(AForm const &src);
-		~AForm();
+		virtual ~AForm();
 
 		AForm&				operator=(AForm const &src);
 

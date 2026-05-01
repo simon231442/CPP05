@@ -11,9 +11,9 @@ Form::Form(std::string const name, int const signed_grade, int const exec_grade)
 	SignGrade_(signed_grade),
 	ExecGrade_(exec_grade)
 {
-	if (SignGrade_ < 1)
+	if (SignGrade_ < 1 || ExecGrade_ < 1)
 		throw GradeTooHighException();
-	if (SignGrade_ > 150)
+	if (SignGrade_ > 150 || ExecGrade_ > 150)
 		throw GradeTooLowException();
 }
 

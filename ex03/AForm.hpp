@@ -8,23 +8,24 @@
 class Bureaucrat;
 
 class AForm {
-	protected :
+	private :
 		std::string const	Name_;
 		std::string			Target_;
 		bool				Signed_;
 		int const			SignGrade_;
 		int const			ExecGrade_;
+	protected :
 		virtual void		action(void) const = 0;
 	public :
 		AForm();
-		AForm(std::string const name, std::string const target);
-		AForm(std::string const name, int const signed_grade, int const exec_grade);
+		AForm(std::string const & name, std::string const & target, int const signed_grade, int const exec_grade);
 		AForm(AForm const &src);
 		virtual ~AForm();
 
 		AForm&				operator=(AForm const &src);
 
-		std::string const&	getName(void) const;
+		std::string const& getName(void) const;
+		std::string const& getTarget(void) const;
 		int					getSignGrade(void) const;
 		int					getExecGrade(void) const;
 		bool				getSigned(void) const;
@@ -39,13 +40,13 @@ class AForm {
 		class GradeTooHighException : public std::exception {
 			public :
 				virtual char const	*what() const throw();
-			};
+		};
 
 		class GradeTooLowException : public std::exception {
 			public :
 				virtual char const	*what() const throw();
-			};
 		};
+	};
 
 std::ostream&	operator<<(std::ostream &out, AForm const &form);
 

@@ -5,31 +5,22 @@ AForm::AForm() : Name_("default"), Target_("default"), Signed_(0), SignGrade_(1)
 {
 }
 
-AForm::AForm(std::string const name, std::string const target) :
-Name_(name),
-Target_(target),
-Signed_(0),
-SignGrade_(1),
-ExecGrade_(1)
-{
-}
-
-
-AForm::AForm(std::string const name, int const signed_grade, int const exec_grade) :
+AForm::AForm(std::string const & name, std::string const & target, int const signed_grade, int const exec_grade) :
 	Name_(name),
-	Target_("default"),
+	Target_(target),
 	Signed_(0),
 	SignGrade_(signed_grade),
 	ExecGrade_(exec_grade)
 {
-	if (SignGrade_ < 1)
+	if (SignGrade_ < 1 || ExecGrade_ < 1)
 		throw GradeTooHighException();
-	if (SignGrade_ > 150)
+	if (SignGrade_ > 150 || ExecGrade_ > 150)
 		throw GradeTooLowException();
 }
 
 AForm::AForm(AForm const &src) :
 	Name_(src.Name_),
+	Target_(src.Target_),
 	Signed_(src.Signed_),
 	SignGrade_(src.SignGrade_),
 	ExecGrade_(src.ExecGrade_)
@@ -53,6 +44,11 @@ AForm&				AForm::operator=(AForm const &src)
 std::string const&	AForm::getName(void) const
 {
 	return Name_;
+}
+
+std::string const&	AForm::getTarget(void) const
+{
+	return Target_;
 }
 
 int					AForm::getSignGrade(void) const

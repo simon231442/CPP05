@@ -3,14 +3,12 @@
 #include "Bureaucrat.hpp"
 #include  <cstdlib>
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", "default", 25, 5)
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5)
-{
-	Target_ = target;
-}
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", target, 25, 5)
+{}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& src) : AForm(src)
 {
@@ -31,5 +29,5 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 
 void		PresidentialPardonForm::action(void) const
 {
-	std::cout << Target_ << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
